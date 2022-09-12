@@ -1,7 +1,7 @@
-FROM node:alpine
+FROM node:16.17.0 as build
 
-COPY ./app .
+COPY /app .
 
 RUN npm install
 
-CMD ["npm", "start"]
+CMD ["node", "index.js"]

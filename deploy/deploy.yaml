@@ -14,8 +14,10 @@ spec:
     spec:
       containers:
         - name: demo
-          image: demo:v0.0.0
+          image: localhost:5000/demo:v0.0.0
           env:
+            - name: KAFKA_BROKER
+              value: my-cluster-kafka-bootstrap:9092
             - name: KAFKA_TOPIC_NAME
               value: my-topic
           imagePullPolicy: Always
