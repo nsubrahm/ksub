@@ -38,7 +38,7 @@ const kafkaConfig = {
 const kafkaStreams = new KafkaStreams(kafkaConfig);
 kafkaStreams.on('connection', (s) => console.log("Connected."))
 
-const kafkaTopicName = "m001_limits";
+const kafkaTopicName = process.env.KAFKA_TOPIC_NAME;
 const stream = kafkaStreams.getKStream(kafkaTopicName);
 
 stream.forEach(message => console.log(message));
