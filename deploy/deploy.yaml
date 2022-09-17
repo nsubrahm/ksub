@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo
+  name: ksubscriber
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo
+      app: ksubscriber
   template:
     metadata:
       labels:
-        app: demo
+        app: ksubscriber
     spec:
       containers:
-        - name: demo
-          image: localhost:5000/demo:v0.0.0
+        - name: ksubscriber
+          image: localhost:5000/nsubrahm/ksubscriber:v0.0.0
           env:
             - name: KAFKA_BROKER
               value: my-cluster-kafka-bootstrap:9092
             - name: KAFKA_TOPIC_NAME
-              value: my-topic
+              value: machine_data
           imagePullPolicy: Always

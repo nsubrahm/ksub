@@ -43,7 +43,8 @@ const myConsumerStream = kafkaStreams.getKStream()
 
 myConsumerStream
     .from(kafkaTopicName)
+    .mapBufferKeyToString()
     .mapBufferValueToString() //value: Buffer -> value: string
-    .forEach(console.log);
+    .forEach((msg) => { console.log(`Key: ${msg.key}, Value: ${msg.value}, Offset: ${msg.offset}, Timestamp: ${msg.timestamp}`) });
 
 myConsumerStream.start()
