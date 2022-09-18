@@ -46,4 +46,8 @@ myConsumerStream
     .mapBufferValueToString() //value: Buffer -> value: string
     .forEach((msg) => { console.log(`Key: ${msg.key}, Value: ${msg.value}, Offset: ${msg.offset}, Timestamp: ${msg.timestamp}`) });
 
-myConsumerStream.start()
+myConsumerStream.start().then(() => {
+    console.log("stream started, as kafka consumer is ready.");
+}, error => {
+    console.log("streamed failed to start: " + error);
+});
