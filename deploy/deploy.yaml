@@ -17,7 +17,7 @@ spec:
           image: localhost:5000/nsubrahm/ksubscriber:v0.0.0
           env:
             - name: KAFKA_BROKER
-              value: my-cluster-kafka-bootstrap:9092
+              value: my-cluster-kafka-bootstrap.kafka.svc:9092
             - name: KAFKA_TOPIC_NAME
               value: machine_data
           imagePullPolicy: Always

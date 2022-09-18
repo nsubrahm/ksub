@@ -38,7 +38,6 @@ const kafkaConfig = {
 
 const kafkaStreams = new KafkaStreams(kafkaConfig);
 const kafkaTopicName = process.env.KAFKA_TOPIC_NAME;
-
 const myConsumerStream = kafkaStreams.getKStream()
 
 myConsumerStream
