@@ -19,5 +19,5 @@ spec:
             - name: KAFKA_BROKER
               value: my-cluster-kafka-bootstrap.kafka.svc:9092
             - name: KAFKA_TOPIC_NAME
-              value: machine_data
+              value: machine_alerts
           imagePullPolicy: Always

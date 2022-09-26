@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  subscriber:
+    image: nsubrahm/subscriber:1.0
+    build:
+      dockerfile: Dockerfile
+      context: ..
+    environment:
+      - KAFKA_BROKER=kafka:9092
+      - KAFKA_TOPIC=machine_alerts
+    networks:
+      - kafkastreams-network
+
+networks:
+  kafkastreams-network:
+    name: ks
