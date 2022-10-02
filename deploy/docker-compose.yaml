@@ -6,9 +6,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ..
-    environment:
-      - KAFKA_BROKER=kafka:9092
-      - KAFKA_TOPIC=machine_alerts
+    env_file:
+      - .env
     networks:
       - kafkastreams-network
 
