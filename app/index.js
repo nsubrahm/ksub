@@ -1,8 +1,16 @@
 const { Kafka } = require('kafkajs')
 
+const SASL_USERNAME = process.env.SASL_USERNAME
+const SASL_PASSWORD = process.env.SASL_PASSWORD
+
 const kafka = new Kafka({
   clientId: 'ksub',
-  brokers: [process.env.KAFKA_BROKER]
+  brokers: [process.env.KAFKA_BROKER],
+  sasl: {
+    mechanism: 'plain',
+    username: SASL_USERNAME,
+    password: SASL_PASSWORD
+  },
 })
 
 const consumer = kafka.consumer({ groupId: 'ksub' })

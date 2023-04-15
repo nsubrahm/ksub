@@ -1,7 +1,12 @@
-FROM node:16.17.0 as build
+FROM node:18-alpine as build
 
+WORKDIR /app
 COPY /app .
+COPY /app/package*.json .
 
-RUN npm install
+RUN npm ci --only=production
 
-CMD ["node", "index.js"]
+FROM gcr.io/distroless/nodejs18-debian11
+COPY --from=build /app /app
+WORKDIR /app
+CMD ["index.js"]

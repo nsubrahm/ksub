@@ -2,12 +2,11 @@ version: '3.5'
 
 services:
   subscriber:
-    image: nsubrahm/subscriber:1.0
-    build:
-      dockerfile: Dockerfile
-      context: ..
+    container_name: subscriber
+    image: nsubrahm/subscriber:v0.0.0
     env_file:
-      - .env
+      - broker.env
+      - sasl-auth.env
     networks:
       - kafkastreams-network
 
